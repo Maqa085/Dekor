@@ -282,7 +282,7 @@
       background: linear-gradient(270deg, transparent, #dfc17b);
     }
 
-    /* SERVICES (NO IMAGES, PILL STYLE) */
+    /* SERVICES (LIST STYLE) */
     .services-section {
       padding: 30px 20px;
     }
@@ -342,6 +342,7 @@
       border: 1px solid rgba(223, 193, 123, 0.2);
       background: rgba(255, 255, 255, 0.02);
       box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      cursor: pointer;
     }
 
     .gallery-card img {
@@ -368,6 +369,99 @@
       font-size: 12px;
       font-weight: 600;
       color: #e5cd8d;
+    }
+
+    /* POP-UP MODAL STYLES */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 300;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-card {
+      background: #0b2217;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      border-radius: 20px;
+      width: 100%;
+      max-width: 380px;
+      padding: 20px;
+      position: relative;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), 0 0 20px rgba(212, 175, 55, 0.2);
+      transform: translateY(20px);
+      transition: transform 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .modal-overlay.active .modal-card {
+      transform: translateY(0);
+    }
+
+    .close-modal-btn {
+      position: absolute;
+      top: 12px;
+      right: 15px;
+      font-size: 22px;
+      color: #dfc17b;
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    .modal-img-wrapper {
+      width: 100%;
+      height: 230px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(223, 193, 123, 0.2);
+    }
+
+    .modal-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .modal-info {
+      text-align: center;
+    }
+
+    .modal-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      color: #ffffff;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .modal-desc {
+      font-size: 13px;
+      color: #cbd5e1;
+      line-height: 1.5;
+    }
+
+    .modal-btn {
+      margin-top: 5px;
+      width: 100%;
+      max-width: 100%;
     }
 
     /* FOOTER */
@@ -397,11 +491,10 @@
         <div class="logo-title">Dekor Studio</div>
         <div class="logo-subtitle">BAKU</div>
       </div>
-      <!-- Menyu düyməsi -->
       <div class="header-icon" onclick="toggleMenu()"><i class="fa-solid fa-bars"></i></div>
     </header>
 
-    <!-- Slide-out Menu -->
+    <!-- Side Menu -->
     <div class="side-menu" id="sideMenu">
       <div class="close-menu" onclick="toggleMenu()"><i class="fa-solid fa-xmark"></i></div>
       <div class="menu-links">
@@ -426,7 +519,7 @@
       </div>
     </div>
 
-    <!-- Xidmətlərimiz Bölməsi (Sadece adlar və ox işarəsi) -->
+    <!-- Xidmətlərimiz -->
     <section class="services-section" id="services">
       <h2 class="section-title">Xidmətlərimiz</h2>
 
@@ -454,61 +547,130 @@
       </div>
     </section>
 
-    <!-- Qalereya Bölməsi (Şəkil Linklərini Bura Qoyacaqsınız) -->
+    <!-- Qalereya Bölməsi (JavaScript ilə dinamik yaradılır) -->
     <section class="gallery-section" id="gallery">
       <h2 class="section-title">Qalereya</h2>
-
-      <div class="gallery-grid">
-        
-        <!-- Şəkil 1 -->
-        <a href="https://wa.me/994508400177?text=Salam.%20Bu%20dekor%20bar%C9%99d%C9%99%20m%C9%99lumat%20almaq%20ist%C9%99yir%C9%99m." target="_blank" class="gallery-card">
-          <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=500&q=80" alt="Dekor 1">
-          <div class="gallery-overlay">
-            <span class="gallery-title">Səhnə Dekoru</span>
-          </div>
-        </a>
-
-        <!-- Şəkil 2 -->
-        <a href="https://wa.me/994508400177?text=Salam.%20Bu%20dekor%20bar%C9%99d%C9%99%20m%C9%99lumat%20almaq%20ist%C9%99yir%C9%99m." target="_blank" class="gallery-card">
-          <img src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&w=500&q=80" alt="Dekor 2">
-          <div class="gallery-overlay">
-            <span class="gallery-title">Gül Konsepsiyası</span>
-          </div>
-        </a>
-
-        <!-- Şəkil 3 -->
-        <a href="https://wa.me/994508400177?text=Salam.%20Bu%20dekor%20bar%C9%99d%C9%99%20m%C9%99lumat%20almaq%20ist%C9%99yir%C9%99m." target="_blank" class="gallery-card">
-          <img src="https://images.unsplash.com/photo-1532712938310-34cb3982ef74?auto=format&fit=crop&w=500&q=80" alt="Dekor 3">
-          <div class="gallery-overlay">
-            <span class="gallery-title">Masa Bəzədilməsi</span>
-          </div>
-        </a>
-
-        <!-- Şəkil 4 -->
-        <a href="https://wa.me/994508400177?text=Salam.%20Bu%20dekor%20bar%C9%99d%C9%99%20m%C9%99lumat%20almaq%20ist%C9%99yir%C9%99m." target="_blank" class="gallery-card">
-          <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=500&q=80" alt="Dekor 4">
-          <div class="gallery-overlay">
-            <span class="gallery-title">Foto Zona</span>
-          </div>
-        </a>
-
-      </div>
+      <div class="gallery-grid" id="galleryGrid"></div>
     </section>
 
-    <!-- Sade Footer -->
+    <!-- Footer -->
     <footer>
       <div class="footer-logo">Dekor Studio Baku</div>
     </footer>
 
   </div>
 
+  <!-- POP-UP MODAL (Şəkil Böyütmə Pəncərəsi) -->
+  <div class="modal-overlay" id="imageModal" onclick="closeModalOutside(event)">
+    <div class="modal-card">
+      <span class="close-modal-btn" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></span>
+      <div class="modal-img-wrapper">
+        <img id="modalImg" src="" alt="Dekor">
+      </div>
+      <div class="modal-info">
+        <h3 class="modal-title" id="modalTitle"></h3>
+        <p class="modal-desc" id="modalDesc"></p>
+      </div>
+      <a id="modalWaBtn" href="" target="_blank" class="btn-whatsapp modal-btn">
+        <i class="fa-brands fa-whatsapp"></i> Əlaqə Saxlayın / Sifariş Et
+      </a>
+    </div>
+  </div>
+
   <script>
+    // ----------------------------------------------------
+    //  WHATSAPP NÖMRƏNİZ
+    // ----------------------------------------------------
+    const phoneNumber = "994508400177";
+
+    // ----------------------------------------------------
+    //  SİZİN QALEREYA MƏLUMATLARI (BURADAN İSTƏDİYİNİZ QƏDƏR ŞƏKİL ƏLAVƏ EDƏ BİLƏRSİNİZ)
+    // ----------------------------------------------------
+    const galleryData = [
+      {
+        title: "Səhnə Dekoru",
+        img: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=500&q=80",
+        desc: "Toy və nişan mərasimləri üçün lüks işıqlandırma və zərif bəzədilmiş xüsusi səhnə konsepsiyası."
+      },
+      {
+        title: "Gül Konsepsiyası",
+        img: "https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&w=500&q=80",
+        desc: "Xüsusi seçilmiş təbii və canlı güllərlə məkanın və masaların bəzədilməsi."
+      },
+      {
+        title: "Masa Bəzədilməsi",
+        img: "https://images.unsplash.com/photo-1532712938310-34cb3982ef74?auto=format&fit=crop&w=500&q=80",
+        desc: "Qonaq masaları üçün zərif şamdanlar, süfrələr və estetik qab-qacaq tərtibatı."
+      },
+      {
+        title: "Foto Zona",
+        img: "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=500&q=80",
+        desc: "Unudulmaz xatirə şəkilləri çəkdirmək üçün müasir dizaynda hazırlanmış foto zonalar."
+      }
+      /* Yeni şəkil əlavə etmək üçün yuxarıdakı kimi sadəcə vergül qoyub aşağıdakı formada əlavə edin:
+      ,{
+        title: "Yeni Dekor Adı",
+        img: "ŞƏKİL_LİNKİ",
+        desc: "Dekor haqqında qısa məlumat"
+      }
+      */
+    ];
+
+    // Qalereyanı ekrana çıxaran funksiya
+    function renderGallery() {
+      const grid = document.getElementById('galleryGrid');
+      grid.innerHTML = '';
+
+      galleryData.forEach((item, index) => {
+        const card = document.createElement('div');
+        card.className = 'gallery-card';
+        card.onclick = () => openModal(index);
+
+        card.innerHTML = `
+          <img src="${item.img}" alt="${item.title}">
+          <div class="gallery-overlay">
+            <span class="gallery-title">${item.title}</span>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    // Modal pəncərəni açan funksiya
+    function openModal(index) {
+      const item = galleryData[index];
+      document.getElementById('modalImg').src = item.img;
+      document.getElementById('modalTitle').innerText = item.title;
+      document.getElementById('modalDesc').innerText = item.desc || '';
+
+      const waMessage = encodeURIComponent(`Salam, "${item.title}" dekorasiyası haqqında məlumat almaq istəyirəm.`);
+      document.getElementById('modalWaBtn').href = `https://wa.me/${phoneNumber}?text=${waMessage}`;
+
+      document.getElementById('imageModal').classList.add('active');
+    }
+
+    // Modal pəncərəni bağlayan funksiya
+    function closeModal() {
+      document.getElementById('imageModal').classList.remove('active');
+    }
+
+    // Modalın kənarına basdıqda bağlamaq
+    function closeModalOutside(e) {
+      if (e.target.id === 'imageModal') {
+        closeModal();
+      }
+    }
+
+    // Menyu açılıb-bağlanması
     function toggleMenu() {
       const menu = document.getElementById('sideMenu');
       menu.classList.toggle('active');
     }
+
+    // Səhifə yükləndikdə qalereyanı qur
+    document.addEventListener('DOMContentLoaded', renderGallery);
   </script>
 
 </body>
-  </html>
-  
+          </html>
+        
