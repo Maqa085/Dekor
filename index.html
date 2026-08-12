@@ -19,6 +19,10 @@
       -webkit-tap-highlight-color: transparent;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
       background: #06150e;
@@ -101,10 +105,59 @@
       text-transform: uppercase;
     }
 
+    /* SIDE MENU (DRAWER) */
+    .side-menu {
+      position: absolute;
+      top: 0;
+      right: -250px;
+      width: 220px;
+      height: 100%;
+      background: rgba(6, 21, 14, 0.98);
+      backdrop-filter: blur(15px);
+      z-index: 200;
+      padding: 60px 20px 20px 20px;
+      transition: right 0.3s ease;
+      border-left: 1px solid rgba(212, 175, 55, 0.2);
+    }
+
+    .side-menu.active {
+      right: 0;
+    }
+
+    .close-menu {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 20px;
+      color: #dfc17b;
+      cursor: pointer;
+    }
+
+    .menu-links {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .menu-links a {
+      color: #e2e8f0;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: color 0.3s;
+    }
+
+    .menu-links a:hover {
+      color: #dfc17b;
+    }
+
     /* HERO SECTION */
     .hero {
       position: relative;
-      height: 420px;
+      height: 380px;
       background-size: cover;
       background-position: center;
       display: flex;
@@ -129,7 +182,7 @@
 
     .hero-title {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 32px;
+      font-size: 30px;
       font-weight: 700;
       line-height: 1.2;
       color: #ffffff;
@@ -173,17 +226,6 @@
       max-width: 160px;
     }
 
-    .btn-gold::before {
-      content: '';
-      position: absolute;
-      top: 0; left: -100%;
-      width: 100%; height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
-      transition: 0.5s;
-    }
-
-    .btn-gold:hover::before { left: 100%; }
-
     .btn-gold:hover {
       transform: translateY(-3px);
       box-shadow: 0 10px 25px rgba(184, 147, 67, 0.5);
@@ -216,17 +258,13 @@
       box-shadow: 0 10px 25px rgba(37, 211, 102, 0.5);
     }
 
-    /* SPECIALTIES SECTION */
-    .specialties {
-      padding: 30px 20px 90px 20px;
-    }
-
+    /* SECTIONS */
     .section-title {
       font-family: 'Cormorant Garamond', serif;
       text-align: center;
-      font-size: 28px;
+      font-size: 26px;
       color: #fff;
-      margin-bottom: 22px;
+      margin-bottom: 20px;
       font-weight: 700;
       display: flex;
       align-items: center;
@@ -244,194 +282,133 @@
       background: linear-gradient(270deg, transparent, #dfc17b);
     }
 
-    .cards-container {
+    /* SERVICES (NO IMAGES, PILL STYLE) */
+    .services-section {
+      padding: 30px 20px;
+    }
+
+    .services-list {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 12px;
     }
 
-    /* CARD ITEM */
-    .card {
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
-      border-radius: 18px;
-      display: flex;
-      height: 115px;
-      overflow: hidden;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    .service-item {
+      background: rgba(255, 255, 255, 0.03);
       border: 1px solid rgba(223, 193, 123, 0.2);
+      padding: 16px 20px;
+      border-radius: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      text-decoration: none;
+      color: #ffffff;
       transition: all 0.3s ease;
-      cursor: pointer;
     }
 
-    .card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(223, 193, 123, 0.6);
+    .service-item:hover {
+      background: rgba(223, 193, 123, 0.1);
+      border-color: rgba(223, 193, 123, 0.5);
+      transform: translateX(4px);
     }
 
-    .card-img-wrapper {
-      width: 45%;
-      height: 100%;
+    .service-name {
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .service-arrow {
+      color: #dfc17b;
+      font-size: 14px;
+    }
+
+    /* GALLERY SECTION */
+    .gallery-section {
+      padding: 20px 20px 40px 20px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .gallery-card {
+      position: relative;
+      border-radius: 16px;
       overflow: hidden;
+      aspect-ratio: 1;
+      border: 1px solid rgba(223, 193, 123, 0.2);
+      background: rgba(255, 255, 255, 0.02);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     }
 
-    .card-img {
+    .gallery-card img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.5s ease;
+      transition: transform 0.4s ease;
     }
 
-    .card:hover .card-img {
-      transform: scale(1.1);
+    .gallery-card:hover img {
+      transform: scale(1.08);
     }
 
-    .card-content {
-      width: 55%;
-      padding: 14px 16px;
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, rgba(6, 21, 14, 0.8) 0%, transparent 60%);
       display: flex;
-      flex-direction: column;
-      justify-content: center;
-      background: rgba(11, 34, 23, 0.6);
+      align-items: flex-end;
+      padding: 10px;
     }
 
-    .card-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 18px;
-      font-weight: 700;
-      line-height: 1.15;
-      text-transform: uppercase;
-      margin-bottom: 6px;
-      color: #ffffff;
-    }
-
-    .card-link {
-      color: #dfc17b;
-      font-size: 11px;
+    .gallery-title {
+      font-size: 12px;
       font-weight: 600;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-    }
-
-    /* FLOATING WHATSAPP BUTTON */
-    .whatsapp-btn {
-      position: fixed;
-      bottom: 25px;
-      right: 50%;
-      transform: translateX(170px);
-      background: rgba(255, 255, 255, 0.95);
-      border-radius: 40px;
-      padding: 8px 16px 8px 10px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-      z-index: 100;
-      text-decoration: none;
-      border: 1px solid rgba(37, 211, 102, 0.3);
-      transition: all 0.3s ease;
-    }
-
-    @media (max-width: 480px) {
-      .whatsapp-btn {
-        right: 20px;
-        transform: none;
-      }
-    }
-
-    .whatsapp-icon {
-      background: #25d366;
-      color: #fff;
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
-    }
-
-    .whatsapp-text {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .whatsapp-text span:first-child {
-      font-size: 11px;
-      font-weight: 700;
-      color: #0b2217;
-    }
-
-    .whatsapp-text span:last-child {
-      font-size: 9px;
-      color: #666;
+      color: #e5cd8d;
     }
 
     /* FOOTER */
     footer {
       background: #040e09;
-      padding: 18px;
-      color: #dfc17b;
+      padding: 20px;
+      text-align: center;
       border-top: 1px solid rgba(223, 193, 123, 0.15);
-    }
-
-    .footer-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
     }
 
     .footer-logo {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 14px;
+      font-size: 16px;
       color: #e5cd8d;
       text-transform: uppercase;
       font-weight: 700;
-    }
-
-    .footer-nav {
-      display: flex;
-      gap: 10px;
-    }
-
-    .footer-nav a {
-      color: #a3b8cc;
-      text-decoration: none;
-      font-size: 11px;
-    }
-
-    .social-icons {
-      display: flex;
-      gap: 8px;
-    }
-
-    .social-icons a {
-      color: #dfc17b;
-      width: 26px;
-      height: 26px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.05);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 11px;
-      text-decoration: none;
     }
   </style>
 </head>
 <body>
 
-  <div class="mobile-container">
+  <div class="mobile-container" id="home">
+    
     <!-- Header -->
     <header>
-      <div class="header-icon"><i class="fa-solid fa-bars"></i></div>
       <div class="logo">
         <div class="logo-title">Dekor Studio</div>
         <div class="logo-subtitle">BAKU</div>
       </div>
-      <div class="header-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+      <!-- Menyu düyməsi -->
+      <div class="header-icon" onclick="toggleMenu()"><i class="fa-solid fa-bars"></i></div>
     </header>
+
+    <!-- Slide-out Menu -->
+    <div class="side-menu" id="sideMenu">
+      <div class="close-menu" onclick="toggleMenu()"><i class="fa-solid fa-xmark"></i></div>
+      <div class="menu-links">
+        <a href="#home" onclick="toggleMenu()"><i class="fa-solid fa-house"></i> Ana Səhifə</a>
+        <a href="#gallery" onclick="toggleMenu()"><i class="fa-solid fa-images"></i> Qalereya</a>
+      </div>
+    </div>
 
     <!-- Hero Banner -->
     <div class="hero" style="background-image: url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=800&q=80');">
@@ -440,98 +417,98 @@
         <h1 class="hero-title">Özəl Tədbirləriniz Üçün Unudulmaz Məkanlar</h1>
         <p class="hero-subtitle">Lüks Və Gözəl Dekorasiyalar</p>
         
-        <!-- İKİ DÜYMƏ -->
         <div class="btn-group">
           <a href="#services" class="btn-gold">Dekorlarımız</a>
-          <!-- WHATSAPP ƏLAQƏ DÜYMƏSİ (Nömrənizi 994XXXXXXXXX yerinə yazın) -->
-          <a href="https://wa.me/994508400177?text=Salam. Zəhmət Olmasa, Dekor Barədə Məlumat Verin." target="_blank" class="btn-whatsapp">
+          <a href="https://wa.me/994508400177?text=Salam.%20Z%C9%99hm%C9%99t%20Olmasa,%20Dekor%20Bar%C9%99d%C9%99%20M%C9%99lumat%20Verin." target="_blank" class="btn-whatsapp">
             <i class="fa-brands fa-whatsapp"></i> Əlaqə Saxlayın
           </a>
         </div>
-
       </div>
     </div>
 
-    <!-- Bizim Xidmətlər (Specialties) -->
-    <section class="specialties" id="services">
+    <!-- Xidmətlərimiz Bölməsi (Sadece adlar və ox işarəsi) -->
+    <section class="services-section" id="services">
       <h2 class="section-title">Xidmətlərimiz</h2>
 
-      <div class="cards-container">
+      <div class="services-list">
+        <a href="#gallery" class="service-item">
+          <span class="service-name">Toy Dekorasiyası</span>
+          <i class="fa-solid fa-arrow-right service-arrow"></i>
+        </a>
+        <a href="#gallery" class="service-item">
+          <span class="service-name">Ad Günü Dekorları</span>
+          <i class="fa-solid fa-arrow-right service-arrow"></i>
+        </a>
+        <a href="#gallery" class="service-item">
+          <span class="service-name">Nişan & Xına Mərasimləri</span>
+          <i class="fa-solid fa-arrow-right service-arrow"></i>
+        </a>
+        <a href="#gallery" class="service-item">
+          <span class="service-name">Korporativ Tədbirlər</span>
+          <i class="fa-solid fa-arrow-right service-arrow"></i>
+        </a>
+        <a href="#gallery" class="service-item">
+          <span class="service-name">Xüsusi Foto Zonalar</span>
+          <i class="fa-solid fa-arrow-right service-arrow"></i>
+        </a>
+      </div>
+    </section>
+
+    <!-- Qalereya Bölməsi (Şəkil Linklərini Bura Qoyacaqsınız) -->
+    <section class="gallery-section" id="gallery">
+      <h2 class="section-title">Qalereya</h2>
+
+      <div class="gallery-grid">
         
-        <!-- Kart 1 -->
-        <div class="card">
-          <div class="card-img-wrapper">
-            <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=500&q=80" class="card-img" alt="Səhnə Dizaynı">
+        <!-- Şəkil 1 -->
+        <a href="https://wa.me/994508400177?text=Salam.%20Bu%20dekor%20bar%C9%99d%C9%99%20m%C9%99lumat%20almaq%20ist%C9%99yir%C9%99m." target="_blank" class="gallery-card">
+          <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=500&q=80" alt="Dekor 1">
+          <div class="gallery-overlay">
+            <span class="gallery-title">Səhnə Dekoru</span>
           </div>
-          <div class="card-content">
-            <h3 class="card-title">Səhnə<br>Dizaynı</h3>
-            <a href="https://wa.me/994XXXXXXXXX?text=Salam,%20Dekor%20%C3%9C%C3%A7%C3%BCn%20Yazm%C3%B1%C5%9Fd%C3%B1m" class="card-link">Qalereyaya Bax <i class="fa-solid fa-arrow-right"></i></a>
-          </div>
-        </div>
+        </a>
 
-        <!-- Kart 2 -->
-        <div class="card">
-          <div class="card-img-wrapper">
-            <img src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&w=500&q=80" class="card-img" alt="Gül Kompozisiyaları">
+        <!-- Şəkil 2 -->
+        <a href="https://wa.me/994508400177?text=Salam.%20Bu%20dekor%20bar%C9%99d%C9%99%20m%C9%99lumat%20almaq%20ist%C9%99yir%C9%99m." target="_blank" class="gallery-card">
+          <img src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&w=500&q=80" alt="Dekor 2">
+          <div class="gallery-overlay">
+            <span class="gallery-title">Gül Konsepsiyası</span>
           </div>
-          <div class="card-content">
-            <h3 class="card-title">Gül<br>Dizaynları</h3>
-            <a href="https://wa.me/994XXXXXXXXX?text=Salam,%20Dekor%20%C3%9C%C3%A7%C3%BCn%20Yazm%C3%B1%C5%9Fd%C3%B1m" class="card-link">Ətraflı Bax <i class="fa-solid fa-arrow-right"></i></a>
-          </div>
-        </div>
+        </a>
 
-        <!-- Kart 3 -->
-        <div class="card">
-          <div class="card-img-wrapper">
-            <img src="https://images.unsplash.com/photo-1532712938310-34cb3982ef74?auto=format&fit=crop&w=500&q=80" class="card-img" alt="Masa Tərtibatı">
+        <!-- Şəkil 3 -->
+        <a href="https://wa.me/994508400177?text=Salam.%20Bu%20dekor%20bar%C9%99d%C9%99%20m%C9%99lumat%20almaq%20ist%C9%99yir%C9%99m." target="_blank" class="gallery-card">
+          <img src="https://images.unsplash.com/photo-1532712938310-34cb3982ef74?auto=format&fit=crop&w=500&q=80" alt="Dekor 3">
+          <div class="gallery-overlay">
+            <span class="gallery-title">Masa Bəzədilməsi</span>
           </div>
-          <div class="card-content">
-            <h3 class="card-title">Masa<br>Tərtibatı</h3>
-            <a href="https://wa.me/994XXXXXXXXX?text=Salam,%20Dekor%20%C3%9C%C3%A7%C3%BCn%20Yazm%C3%B1%C5%9Fd%C3%B1m" class="card-link">Məlumat Al <i class="fa-solid fa-arrow-right"></i></a>
-          </div>
-        </div>
+        </a>
 
-        <!-- Kart 4 -->
-        <div class="card">
-          <div class="card-img-wrapper">
-            <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=500&q=80" class="card-img" alt="Xüsusi Konsepsiya">
+        <!-- Şəkil 4 -->
+        <a href="https://wa.me/994508400177?text=Salam.%20Bu%20dekor%20bar%C9%99d%C9%99%20m%C9%99lumat%20almaq%20ist%C9%99yir%C9%99m." target="_blank" class="gallery-card">
+          <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=500&q=80" alt="Dekor 4">
+          <div class="gallery-overlay">
+            <span class="gallery-title">Foto Zona</span>
           </div>
-          <div class="card-content">
-            <h3 class="card-title">Xüsusi<br>Konsepsiya</h3>
-            <a href="https://wa.me/994XXXXXXXXX?text=Salam,%20Dekor%20%C3%9C%C3%A7%C3%BCn%20Yazm%C3%B1%C5%9Fd%C3%B1m" class="card-link">Sifariş Et <i class="fa-solid fa-arrow-right"></i></a>
-          </div>
-        </div>
+        </a>
 
       </div>
     </section>
 
-    <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/994508400177?text=Salam,%20Dekor%20%C3%9C%C3%A7%C3%BCn%20Yazm%C3%B1%C5%9Fd%C3%B1m" target="_blank" class="whatsapp-btn">
-      <div class="whatsapp-icon"><i class="fa-brands fa-whatsapp"></i></div>
-      <div class="whatsapp-text">
-        <span>WhatsApp</span>
-        <span>Bizə Yazın</span>
-      </div>
-    </a>
-
-    <!-- Footer -->
+    <!-- Sade Footer -->
     <footer>
-      <div class="footer-top">
-        <div class="footer-logo">Dekor Studio<br><small style="font-size: 7px; letter-spacing: 2px;">BAKU</small></div>
-        <nav class="footer-nav">
-          <a href="#">Ana Səhifə</a>
-          <a href="#">Haqqımızda</a>
-          <a href="#">Əlaqə</a>
-        </nav>
-        <div class="social-icons">
-          <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-          <a href="#"><i class="fa-brands fa-instagram"></i></a>
-          <a href="#"><i class="fa-brands fa-youtube"></i></a>
-        </div>
-      </div>
+      <div class="footer-logo">Dekor Studio Baku</div>
     </footer>
+
   </div>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('sideMenu');
+      menu.classList.toggle('active');
+    }
+  </script>
 
 </body>
   </html>
-              
+  
