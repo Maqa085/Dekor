@@ -517,7 +517,7 @@
         
         <div class="btn-group">
           <a href="#services" class="btn-gold">Dekorlarımız</a>
-          <a href="https://wa.me/994508400177?text=Salam.%20Z%C9%99hm%C9%99t%20Olmasa,%20Dekor%20Bar%C9%99d%C9%99%20M%C9%99lumat%20Verin." target="_blank" class="btn-whatsapp">
+          <a href="https://wa.me/994508400177?text=Salam, Dekor Üçün Yazmışdım" target="_blank" class="btn-whatsapp">
             <i class="fa-brands fa-whatsapp"></i> Əlaqə Saxlayın
           </a>
         </div>
@@ -577,7 +577,7 @@
         <p class="modal-desc" id="modalDesc"></p>
       </div>
       <a id="modalWaBtn" href="" target="_blank" class="btn-whatsapp modal-btn">
-        <i class="fa-brands fa-whatsapp"></i> Əlaqə Saxlayın / Sifariş Et
+        <i class="fa-brands fa-whatsapp"></i> Əlaqə Saxlayın
       </a>
     </div>
   </div>
@@ -716,7 +716,7 @@
       document.getElementById('modalTitle').innerText = item.title;
       document.getElementById('modalDesc').innerText = item.desc || '';
 
-      const waMessage = encodeURIComponent(`Salam, "${item.title}" dekorasiyası haqqında məlumat almaq istəyirəm.`);
+      const waMessage = encodeURIComponent(`Salam, dekor üçün yazmışdım`);
       document.getElementById('modalWaBtn').href = `https://wa.me/${phoneNumber}?text=${waMessage}`;
 
       document.getElementById('imageModal').classList.add('active');
