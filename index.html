@@ -426,19 +426,24 @@
       z-index: 10;
     }
 
+        /* Modal şəklinin düzəldilməsi */
     .modal-img-wrapper {
       width: 100%;
-      height: 230px;
+      height: 300px; /* Hündürlüyü bir az artırdıq */
       border-radius: 12px;
       overflow: hidden;
-      border: 1px solid rgba(223, 193, 123, 0.2);
+      background: #000; /* Arxa fon qara oldu ki, boşluqlar bilinməsin */
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .modal-img-wrapper img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
-    }
+      object-fit: contain; /* Əsas dəyişiklik budur: Şəkil kəsilməyəcək, tam görsənəcək */
+      }
+      
 
     .modal-info {
       text-align: center;
