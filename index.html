@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elegance Decor</title>
+  <!-- Google Fonts: Elegant Serifs & Sans-serif -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <!-- FontAwesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* Global Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #f7f4ec;
+      color: #1a3328;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .mobile-container {
+      width: 100%;
+      max-width: 430px;
+      background-color: #f7f4ec;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      border-radius: 20px;
+    }
+
+    /* Header */
+    header {
+      background-color: #0b261a;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 20px;
+      color: #dfc17b;
+    }
+
+    .header-icon {
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .logo {
+      text-align: center;
+    }
+
+    .logo-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      letter-spacing: 3px;
+      font-weight: 700;
+      color: #e5cd8d;
+      text-transform: uppercase;
+    }
+
+    .logo-subtitle {
+      font-size: 9px;
+      letter-spacing: 4px;
+      color: #dfc17b;
+      margin-top: -2px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .logo-subtitle::before, .logo-subtitle::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 12px;
+      height: 1px;
+      background: #dfc17b;
+    }
+
+    .logo-subtitle::before { left: -16px; }
+    .logo-subtitle::after { right: -16px; }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      height: 380px;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+      color: #fff;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(180deg, rgba(11,38,26,0.3) 0%, rgba(11,38,26,0.6) 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 32px;
+      font-weight: 600;
+      line-height: 1.2;
+      color: #f7e8c4;
+      margin-bottom: 8px;
+    }
+
+    .hero-subtitle {
+      font-size: 14px;
+      font-weight: 300;
+      color: #f0f0f0;
+      margin-bottom: 25px;
+      letter-spacing: 0.5px;
+    }
+
+    .btn-gold {
+      background: linear-gradient(135deg, #e0c887 0%, #ba9a52 100%);
+      color: #0b261a;
+      padding: 12px 28px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      display: inline-block;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      border: 1px solid #f2e2b8;
+    }
+
+    /* Specialties Section */
+    .specialties {
+      padding: 30px 20px;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      text-align: center;
+      font-size: 28px;
+      color: #0b261a;
+      margin-bottom: 25px;
+      font-weight: 700;
+    }
+
+    .cards-container {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    /* Card Item */
+    .card {
+      background-color: #0b261a;
+      border-radius: 20px;
+      display: flex;
+      height: 110px;
+      overflow: hidden;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+      border: 1px solid #d4af37;
+    }
+
+    .card-img {
+      width: 50%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .card-content {
+      width: 50%;
+      padding: 15px 15px 15px 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      color: #fff;
+    }
+
+    .card-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 17px;
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      color: #ffffff;
+    }
+
+    .card-link {
+      color: #e5cd8d;
+      font-size: 12px;
+      text-decoration: underline;
+      font-weight: 400;
+      text-underline-offset: 3px;
+    }
+
+    /* Floating WhatsApp Button */
+    .whatsapp-btn {
+      position: absolute;
+      bottom: 60px;
+      right: 15px;
+      background-color: #ffffff;
+      border-radius: 30px;
+      padding: 6px 14px 6px 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      z-index: 10;
+      text-decoration: none;
+    }
+
+    .whatsapp-icon {
+      background-color: #25d366;
+      color: #fff;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+
+    .whatsapp-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .whatsapp-text span:first-child {
+      font-size: 12px;
+      font-weight: 700;
+      color: #25d366;
+      line-height: 1;
+    }
+
+    .whatsapp-text span:last-child {
+      font-size: 10px;
+      color: #666;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #05140d;
+      padding: 15px 20px;
+      color: #dfc17b;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .footer-top {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 14px;
+      letter-spacing: 1px;
+      color: #e5cd8d;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .footer-nav {
+      display: flex;
+      gap: 12px;
+    }
+
+    .footer-nav a {
+      color: #e5cd8d;
+      text-decoration: none;
+      font-size: 11px;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 12px;
+      font-size: 12px;
+    }
+
+    .social-icons a {
+      color: #e5cd8d;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="mobile-container">
+    <!-- Header -->
+    <header>
+      <div class="header-icon"><i class="fa-solid fa-bars"></i></div>
+      <div class="logo">
+        <div class="logo-title">Elegance</div>
+        <div class="logo-subtitle">DECOR</div>
+      </div>
+      <div class="header-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+    </header>
+
+    <!-- Hero Banner (Əsas Şəkil) -->
+    <!-- 'style' daxilindəki URL-ə öz istədiyiniz şəkil linkini yaza bilərsiniz -->
+    <div class="hero" style="background-image: url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=800&q=80');">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h1 class="hero-title">Unforgettable Spaces,<br>Curated Designs</h1>
+        <p class="hero-subtitle">Luxury Event & Wedding Decor</p>
+        <a href="#" class="btn-gold">View Services</a>
+      </div>
+    </div>
+
+    <!-- Specialties Section -->
+    <section class="specialties">
+      <h2 class="section-title">Our Specialties</h2>
+
+      <div class="cards-container">
+        
+        <!-- Kart 1: Stage Designs -->
+        <div class="card">
+          <!-- 'src' daxilinə şəkil linkini qoyun -->
+          <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=500&q=80" class="card-img" alt="Stage Designs">
+          <div class="card-content">
+            <h3 class="card-title">Stage<br>Designs</h3>
+            <a href="#" class="card-link">View Gallery</a>
+          </div>
+        </div>
+
+        <!-- Kart 2: Floral Arrangements -->
+        <div class="card">
+          <!-- 'src' daxilinə şəkil linkini qoyun -->
+          <img src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&w=500&q=80" class="card-img" alt="Floral Arrangements">
+          <div class="card-content">
+            <h3 class="card-title">Floral<br>Arrangements</h3>
+            <a href="#" class="card-link">Explore</a>
+          </div>
+        </div>
+
+        <!-- Kart 3: Table Settings -->
+        <div class="card">
+          <!-- 'src' daxilinə şəkil linkini qoyun -->
+          <img src="https://images.unsplash.com/photo-1532712938310-34cb3982ef74?auto=format&fit=crop&w=500&q=80" class="card-img" alt="Table Settings">
+          <div class="card-content">
+            <h3 class="card-title">Table<br>Settings</h3>
+            <a href="#" class="card-link">See Details</a>
+          </div>
+        </div>
+
+        <!-- Kart 4: Custom Elements -->
+        <div class="card">
+          <!-- 'src' daxilinə şəkil linkini qoyun -->
+          <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=500&q=80" class="card-img" alt="Custom Elements">
+          <div class="card-content">
+            <h3 class="card-title">Custom<br>Elements</h3>
+            <a href="#" class="card-link">Request Custom</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="#" class="whatsapp-btn">
+      <div class="whatsapp-icon"><i class="fa-brands fa-whatsapp"></i></div>
+      <div class="whatsapp-text">
+        <span>WhatsApp</span>
+        <span>Chat with Us</span>
+      </div>
+    </a>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-top">
+        <div class="footer-logo">Elegance<br><small style="font-size: 7px; letter-spacing: 2px;">DECOR</small></div>
+        <nav class="footer-nav">
+          <a href="#">Home</a>
+          <a href="#">About Us</a>
+          <a href="#">Contact</a>
+        </nav>
+        <div class="social-icons">
+          <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+</body>
+  </html>
+  
